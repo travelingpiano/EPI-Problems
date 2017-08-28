@@ -1,5 +1,6 @@
 import math
 def reverse(x):
+    #to take into account negative numbers
     negative = False
     if x < 0:
         negative = ~negative
@@ -11,5 +12,5 @@ def reverse(x):
     if negative:
         reversed_x = -reversed_x
     return reversed_x
-    
+
 print(reverse(-104))
