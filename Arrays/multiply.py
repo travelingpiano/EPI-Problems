@@ -6,8 +6,6 @@ def multiply(num1,num2):
         if num2[idx_2] != 0:
             for idx_1 in range(len(num1)):
                 if num1[idx_1] != 0:
-                    # print(f"this is from num1 {num1[idx_1]}")
-                    # print(f"and this is from num2 {num2[idx_2]}")
                     multipled_result = num2[idx_2]*num1[idx_1]
                     multipled_set = []
                     if multipled_result >= 10:
@@ -17,23 +15,17 @@ def multiply(num1,num2):
                     multipled_set += [0]*(len(num1)-1-idx_1)
                     if idx_1 == 0:
                         sub_result = multipled_set
-                        # print(sub_result)
                     else:
                         sub_result = sum_two_arrays(sub_result,multipled_set)
-                        # print(sub_result)
         if idx_2 == 0:
             result = sub_result + [0]*(len(num2)-1-idx_2)
         else:
             result = sum_two_arrays(result,sub_result + [0]*(len(num2)-1-idx_2))
-        # print(f"this is the sub_result {sub_result}")
-        # print(f"and this is the result {result}")
     return result
 
 #array for num1 always longer or equal to array for num2
 def sum_two_arrays(num1,num2):
     carry = 0
-    # print(f"this is num1 {num1}")
-    # print(f"and this is num2 {num2}")
     for sub_idx in range(len(num2)):
         if carry + num2[-1-sub_idx] + num1[-1-sub_idx] < 10:
             num1[-1-sub_idx] += carry + num2[-1-sub_idx]
@@ -46,11 +38,9 @@ def sum_two_arrays(num1,num2):
             num1 = [1] + num1
         else:
             num1[-1-len(num2)] += 1
-    # print(f"this is the result of them summing together {num1}")
     return num1
 
 print(multiply([2,3],[5])) #expect [1,1,5]
 print(multiply([2,2],[4,4])) #expect [9,6,8]
 print(multiply([3,7],[7,3])) #expect [2,7,0,1]
 print(multiply([3,5,7,4],[2,9,7])) #expect [1,0,6,1,4,7,8]
-# print(sum_two_arrays([1,0,3,5,3,0],[2,4,9,9]))
